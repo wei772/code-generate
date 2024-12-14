@@ -1,0 +1,32 @@
+[
+  {
+    "sourceName": "user",
+    "description": "用户",
+    "properties": [
+      {
+        "sourceName": "id",
+        "description": "ID",
+        "type": "Long"
+      },
+      {
+        "sourceName": "code",
+        "description": "编码",
+        "type": "String"
+      },
+      {
+        "sourceName": "time",
+        "description": "时间",
+        "type": "LocalDateTime"
+      }
+    ]
+  },
+  {
+    "sourceName": "user_group",
+    "properties": [
+      {
+        "sourceName": "id",
+        "type": "Long"
+      }
+    ]
+  }
+]

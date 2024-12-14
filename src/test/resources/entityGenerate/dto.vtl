@@ -1,0 +1,42 @@
+@folder dto.${basePackage}
+@file ${pascalName}DO.java
+package dto.${basePackage};
+
+import com.baomidou.mybatisplus.annotation.*;
+import org.apache.ibatis.type.JdbcType;
+#if(!$importStrings.isEmpty())
+
+#end
+#foreach ($importString in $importStrings)
+$importString
+#end
+
+/**
+ * Description:$description
+ */
+@TableName("${sourceName}")
+public class ${pascalName}DO {
+#foreach ($field in $properties)
+
+    /**
+     *#if(${field.description}!= "") #end$field.description
+     */
+    @TableField(value = "${field.sourceName}",
+            jdbcType = JdbcType.${field.jdbcType},
+            insertStrategy = FieldStrategy.NOT_NULL,
+            updateStrategy = FieldStrategy.NOT_NULL
+    )
+    private $field.type $field.camelName;
+#end
+
+#foreach ($field in $properties)
+
+    public $field.type get${field.pascalName}() {
+        return $field.camelName;
+    }
+
+    public void set${field.pascalName}($field.type $field.camelName) {
+        this.$field.camelName = $field.camelName;
+    }
+#end
+}

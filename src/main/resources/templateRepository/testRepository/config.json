@@ -1,0 +1,5 @@
+{
+  "engineName": "velocity",
+  "generateType": "entity",
+  "targetLanguage": "Java"
+}

@@ -1,0 +1,42 @@
+@folder ${basePackage}.entity.demo
+@file ${pascalName}
+package ${basePackage}.entity.demo;
+
+#foreach ($importString in $importStrings)
+$importString
+#end
+
+/**
+#if($entity.hasProperty("id"))
+* 该类包含Id字段
+#end
+#if($tags.hasTag("mysql"))
+* 包含mysqlTag
+#end
+* Description:$description
+* @author $author
+*/
+public class $pascalName {
+#foreach ($field in $properties)
+
+    /**
+     * $field.description
+     */
+    private $field.type $field.camelName;
+#end
+
+
+#foreach ($field in $properties)
+
+
+    public $field.type get${field.pascalName}() {
+        return $field.camelName;
+    }
+
+
+    public void set${field.pascalName}($field.type $field.camelName) {
+        this.$field.camelName = $field.camelName;
+    }
+
+#end
+}

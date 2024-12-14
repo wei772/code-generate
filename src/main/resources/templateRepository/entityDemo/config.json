@@ -1,0 +1,8 @@
+{
+  "engineName": "velocity",
+  "generateType": "entity",
+  "targetLanguage": "Java",
+  "templateFileNames": [
+    "entity.vtl"
+  ]
+}
