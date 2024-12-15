@@ -2,6 +2,7 @@
 
 ## 项目地址
 gitee:  https://gitee.com/wei772/code-generate
+
 github: https://github.com/wei772/code-generate
 
 ## 使用方法
