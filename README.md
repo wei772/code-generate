@@ -1,5 +1,9 @@
 **code-generate是一个通用的代码生成工具**，支持从各种元数据，通过定义模板生成需要的代码，减少低级重复的编码工作。目前支持通过数据库元数据生成业务对象、数据访问对象等。
 
+## 项目地址
+gitee:  https://gitee.com/wei772/code-generate
+github: https://github.com/wei772/code-generate
+
 ## 使用方法
 
 1. 配置模板仓库，在 src/resources/templateRepository 目录下创建模板仓库，详情参考entityDemo仓库
