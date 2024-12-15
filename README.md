@@ -122,8 +122,6 @@ java  -jar code-generate.jar -Dtemplate.repository=entityDemo  -Dgenerate.output
 
 ## 包结构和主要类介绍
 
-讨论实现细节
-
 ### entity包
 
 主要包含实体定义相关类 Entity、Property、EntityType。
@@ -157,8 +155,8 @@ java  -jar code-generate.jar -Dtemplate.repository=entityDemo  -Dgenerate.output
 * CodeGenerate,代码生成的人口，读取所有代码生成相关参数
 
 * CodeGenerateWork，真正去执行代码生成的工作类
-  CodeGenerateWork具体实现类
-* EntityGenerateWork,通过实体配置读取模板文件生成相关文件
+* CodeGenerateWork具体实现类
+  * EntityCodeGenerateWork,通过实体配置读取模板文件生成相关文件
 
 
 
