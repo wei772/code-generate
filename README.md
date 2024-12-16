@@ -50,7 +50,7 @@ java  -jar code-generate.jar -Dtemplate.repository=entityDemo  -Dgenerate.output
 * 其次，尤其是比较重量级的生成容易促使开人人员直接使用生成的代码，而不是根据实际需求去调整代码
 * 还有一个比较重大弊端，会隐藏架构的垃圾设计，给垃圾架构打补丁。 比如一个实体生成几十个相关类，如果要手写只要是程序员就会拒绝这种垃圾架构，
   但是如果有代码生成可能就勉强能接受。
-  
+
   但是这样的架构是难以修改的，生成代码工具只会是温水煮青蛙，还不如不要。
   很多看起来很有用的技术都存在同样的问题，比如依赖注入框架，很容易写出有复杂的依赖的类而不自知。技术手段无法拯救垃圾的设计，只会把问题隐藏的更深点，变得更严重
 
@@ -74,14 +74,13 @@ java  -jar code-generate.jar -Dtemplate.repository=entityDemo  -Dgenerate.output
 
 遇到新的并且复杂的事情，确实很难一下自顶向下给出比较完善设计方案，自底向上提供了一种一步一步解决部分问题，不断集成最终解决所有问题的方式。
 
-#### 测试各个层次
+#### 依次在各个层次编码、设计、测试
 
-测试驱动开发能够对一个概念在各个层级上都很好的测试和设计，例如targetLanguage就是从EntityType到Property以及Entity最后的CodeGenerate
+测试驱动开发能够对一个概念在各个层级上都很好的测试、编码和设计,保证每个层次都最适合自己。例如targetLanguage就是从EntityType到Property以及Entity最后的CodeGenerate
 
-从最高层到最低层设计和测试的。一旦那一层出现问题，只要看哪些测试用例异常都可以分析出哪里出问题，如果高层没有问题，那么问题就是最底层没有传好值，
-或者改动高层的值导致的。
+从最高层到最低层测试。一旦那一层出现问题，只要看哪些测试用例异常都可以分析出哪里出问题，如果高层没有问题，那么问题就是最底层没有传好值，或者改动高层的值导致的。
 
-然后就有了Entity更新targetLanguage,PropertyType也会更新targetLanguage的实现，这能大大降级了调试时间
+然后targetLanguage相关设计，就有了Entity更新targetLanguage,PropertyType也会更新targetLanguage的实现，这能大大降级了调试时间
 
 #### 单元测试的代码代码量
 
