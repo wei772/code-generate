@@ -152,7 +152,6 @@ java  -jar code-generate.jar -Dtemplate.repository=entityDemo  -Dgenerate.output
 代码生成核心类
 
 * CodeGenerate,代码生成的人口，读取所有代码生成相关参数
-
 * CodeGenerateWork，真正去执行代码生成的工作类
 * CodeGenerateWork具体实现类
   * EntityCodeGenerateWork,通过实体配置读取模板文件生成相关文件
