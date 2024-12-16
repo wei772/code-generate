@@ -123,7 +123,7 @@ java  -jar code-generate.jar -Dtemplate.repository=entityDemo  -Dgenerate.output
 
 ### entity包
 
-主要包含实体定义相关类 Entity、Property、EntityType。
+主要包含实体定义相关类 Entity、Property和EntityType。
 
 #### entity.reader包
 
