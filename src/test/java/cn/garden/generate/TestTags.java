@@ -1,6 +1,6 @@
 package cn.garden.generate;
 
-import cn.garden.util.Tags;
+import cn.garden.generate.util.Tags;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

@@ -1,17 +1,17 @@
 package cn.garden.generate.implementation;
 
-import cn.garden.entity.Entity;
-import cn.garden.entity.reader.EntityReader;
+import cn.garden.generate.entity.Entity;
+import cn.garden.generate.entity.reader.EntityReader;
 import cn.garden.generate.BaseGenerateWorkContext;
 import cn.garden.generate.CodeGenerateWork;
-import cn.garden.util.Tags;
+import cn.garden.generate.util.Tags;
 import cn.garden.generate.enums.EntityTemplatePropertyEnum;
-import cn.garden.param.implementation.FileParam;
-import cn.garden.param.implementation.FolderParam;
-import cn.garden.template.TemplateEngine;
-import cn.garden.template.factory.TemplateEngineFactory;
-import cn.garden.util.ExceptionUtil;
-import cn.garden.util.FileUtil;
+import cn.garden.generate.param.implementation.FileParam;
+import cn.garden.generate.param.implementation.FolderParam;
+import cn.garden.generate.template.TemplateEngine;
+import cn.garden.generate.template.factory.TemplateEngineFactory;
+import cn.garden.generate.util.ExceptionUtil;
+import cn.garden.generate.util.FileUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 

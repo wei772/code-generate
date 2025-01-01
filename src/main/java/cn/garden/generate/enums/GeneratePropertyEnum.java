@@ -1,11 +1,11 @@
 package cn.garden.generate.enums;
 
-import cn.garden.entity.reader.EntityReader;
-import cn.garden.entity.reader.enums.EntityReaderEnum;
-import cn.garden.entity.reader.implementation.JdbcFileEntityReader;
-import cn.garden.entity.reader.implementation.JsonFileEntityReader;
+import cn.garden.generate.entity.reader.EntityReader;
+import cn.garden.generate.entity.reader.enums.EntityReaderEnum;
+import cn.garden.generate.entity.reader.implementation.JdbcFileEntityReader;
+import cn.garden.generate.entity.reader.implementation.JsonFileEntityReader;
 import cn.garden.generate.implementation.EntityCodeGenerateWork;
-import cn.garden.template.TemplateRepository;
+import cn.garden.generate.template.TemplateRepository;
 
 /**
  * 代码生成参数枚举

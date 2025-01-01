@@ -1,17 +1,17 @@
 package cn.garden.generate;
 
-import cn.garden.config.FileConfig;
-import cn.garden.entity.Entity;
-import cn.garden.entity.enums.LanguageEnum;
-import cn.garden.entity.reader.implementation.JsonFileEntityReader;
+import cn.garden.generate.config.FileConfig;
+import cn.garden.generate.entity.Entity;
+import cn.garden.generate.entity.enums.LanguageEnum;
+import cn.garden.generate.entity.reader.implementation.JsonFileEntityReader;
 import cn.garden.generate.implementation.EntityCodeGenerateWork;
-import cn.garden.param.implementation.FileParam;
-import cn.garden.param.implementation.FolderParam;
-import cn.garden.template.TemplateEngine;
-import cn.garden.template.enums.TemplateEngineEnum;
-import cn.garden.template.factory.TemplateEngineFactory;
-import cn.garden.util.FileUtil;
-import cn.garden.util.ResourceUtil;
+import cn.garden.generate.param.implementation.FileParam;
+import cn.garden.generate.param.implementation.FolderParam;
+import cn.garden.generate.template.TemplateEngine;
+import cn.garden.generate.template.enums.TemplateEngineEnum;
+import cn.garden.generate.template.factory.TemplateEngineFactory;
+import cn.garden.generate.util.FileUtil;
+import cn.garden.generate.util.ResourceUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ public class TestEntityCodeGenerateWork{
 
         for (Entity entity : entities) {
             templateProperties.put("basePackage", basePackage);
-            templateProperties.put("cn/garden/entity", entity);
+            templateProperties.put("cn/garden/generate/entity", entity);
             templateProperties.put("description", entity.getDescription());
             templateProperties.put("sourceName", entity.getSourceName());
             templateProperties.put("pascalName", entity.getPascalName());

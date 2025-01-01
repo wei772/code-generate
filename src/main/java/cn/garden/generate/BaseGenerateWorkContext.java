@@ -1,6 +1,6 @@
 package cn.garden.generate;
 
-import cn.garden.entity.enums.LanguageEnum;
+import cn.garden.generate.entity.enums.LanguageEnum;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 

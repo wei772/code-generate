@@ -1,10 +1,10 @@
 package cn.garden.generate;
 
-import cn.garden.config.DatabaseConfig;
-import cn.garden.config.FileConfig;
+import cn.garden.generate.config.DatabaseConfig;
+import cn.garden.generate.config.FileConfig;
 import cn.garden.generate.enums.GeneratePropertyEnum;
-import cn.garden.util.FileUtil;
-import cn.garden.util.ResourceUtil;
+import cn.garden.generate.util.FileUtil;
+import cn.garden.generate.util.ResourceUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
 package cn.garden.generate.enums;
 
-import cn.garden.entity.Entity;
-import cn.garden.util.Tags;
-import cn.garden.util.ExceptionUtil;
+import cn.garden.generate.entity.Entity;
+import cn.garden.generate.util.Tags;
+import cn.garden.generate.util.ExceptionUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;

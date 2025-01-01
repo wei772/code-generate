@@ -134,7 +134,7 @@
                                 <manifest>
 <!--                                     https://maven.apache.org/shared/maven-archiver/index.html-->
                                     <mainClass>
-                                        cn.garden.CommandLineApplication
+                                        cn.garden.generate.CommandLineApplication
                                     </mainClass>
                                     <addClasspath>true</addClasspath>
 

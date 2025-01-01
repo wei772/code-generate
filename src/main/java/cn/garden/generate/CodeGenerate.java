@@ -1,7 +1,7 @@
 package cn.garden.generate;
 
 import cn.garden.generate.factory.CodeGenerateWorkFactory;
-import cn.garden.template.TemplateRepository;
+import cn.garden.generate.template.TemplateRepository;
 
 import java.util.List;
 

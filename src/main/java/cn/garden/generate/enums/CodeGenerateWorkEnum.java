@@ -1,6 +1,6 @@
 package cn.garden.generate.enums;
 
-import cn.garden.util.ExceptionUtil;
+import cn.garden.generate.util.ExceptionUtil;
 import org.apache.commons.lang3.StringUtils;
 
 /**

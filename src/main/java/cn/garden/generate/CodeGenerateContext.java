@@ -1,7 +1,7 @@
 package cn.garden.generate;
 
-import cn.garden.template.TemplateRepository;
-import cn.garden.util.ExceptionUtil;
+import cn.garden.generate.template.TemplateRepository;
+import cn.garden.generate.util.ExceptionUtil;
 
 import java.util.HashMap;
 import java.util.List;

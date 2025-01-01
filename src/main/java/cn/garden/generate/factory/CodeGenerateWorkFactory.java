@@ -1,17 +1,17 @@
 package cn.garden.generate.factory;
 
-import cn.garden.entity.enums.LanguageEnum;
-import cn.garden.entity.reader.EntityReader;
-import cn.garden.entity.reader.factory.EntityReaderFactory;
+import cn.garden.generate.entity.enums.LanguageEnum;
+import cn.garden.generate.entity.reader.EntityReader;
+import cn.garden.generate.entity.reader.factory.EntityReaderFactory;
 import cn.garden.generate.BaseGenerateWorkContext;
 import cn.garden.generate.CodeGenerateContext;
 import cn.garden.generate.CodeGenerateWork;
 import cn.garden.generate.enums.CodeGenerateWorkEnum;
 import cn.garden.generate.enums.GeneratePropertyEnum;
 import cn.garden.generate.implementation.EntityCodeGenerateWork;
-import cn.garden.template.TemplateRepository;
-import cn.garden.template.TemplateRepositoryConfig;
-import cn.garden.util.ExceptionUtil;
+import cn.garden.generate.template.TemplateRepository;
+import cn.garden.generate.template.TemplateRepositoryConfig;
+import cn.garden.generate.util.ExceptionUtil;
 
 /**
  * 代码生成工作类工厂方法
