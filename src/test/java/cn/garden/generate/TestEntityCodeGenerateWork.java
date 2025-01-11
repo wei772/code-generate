@@ -2,13 +2,13 @@ package cn.garden.generate;
 
 import cn.garden.generate.config.FileConfig;
 import cn.garden.generate.entity.Entity;
-import cn.garden.generate.entity.enums.LanguageEnum;
+import cn.garden.generate.entity.LanguageType;
 import cn.garden.generate.entity.reader.implementation.JsonFileEntityReader;
 import cn.garden.generate.implementation.EntityCodeGenerateWork;
 import cn.garden.generate.param.implementation.FileParam;
 import cn.garden.generate.param.implementation.FolderParam;
 import cn.garden.generate.template.TemplateEngine;
-import cn.garden.generate.template.enums.TemplateEngineEnum;
+import cn.garden.generate.template.TemplateEngineType;
 import cn.garden.generate.template.factory.TemplateEngineFactory;
 import cn.garden.generate.util.FileUtil;
 import cn.garden.generate.util.ResourceUtil;
@@ -31,7 +31,7 @@ public class TestEntityCodeGenerateWork{
 
     @Test
     public void useTemplateEngine() {
-        TemplateEngine templateEngine = TemplateEngineFactory.create(TemplateEngineEnum.VELOCITY.getName());
+        TemplateEngine templateEngine = TemplateEngineFactory.create(TemplateEngineType.VELOCITY.getName());
         templateEngine.init();
 
         Map<String, Object> templateProperties = new HashMap<>();
@@ -84,8 +84,8 @@ public class TestEntityCodeGenerateWork{
         entityGenContext.setBasePackage(basePackage);
         entityGenContext.setTemplateFiles(
                 Arrays.asList("entityGenerate/entity.vtl", "entityGenerate/dto.vtl"));
-        entityGenContext.setEngineName(TemplateEngineEnum.VELOCITY.getName());
-        entityGenContext.setTargetLanguage(LanguageEnum.JAVA);
+        entityGenContext.setEngineName(TemplateEngineType.VELOCITY.getName());
+        entityGenContext.setTargetLanguage(LanguageType.JAVA);
 
         EntityCodeGenerateWork entityGen = new EntityCodeGenerateWork(entityGenContext,
                 new JsonFileEntityReader(getUserDefinition()));

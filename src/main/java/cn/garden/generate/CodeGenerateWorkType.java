@@ -1,4 +1,4 @@
-package cn.garden.generate.enums;
+package cn.garden.generate;
 
 import cn.garden.generate.util.ExceptionUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author liwei
  */
-public enum CodeGenerateWorkEnum {
+public enum CodeGenerateWorkType {
 
     ENTITY("entity"),
 
@@ -16,12 +16,12 @@ public enum CodeGenerateWorkEnum {
 
     private final String name;
 
-    CodeGenerateWorkEnum(String name) {
+    CodeGenerateWorkType(String name) {
         this.name = name;
     }
 
-    public static CodeGenerateWorkEnum getEnum(String name) {
-        for (CodeGenerateWorkEnum value : values()) {
+    public static CodeGenerateWorkType of(String name) {
+        for (CodeGenerateWorkType value : values()) {
             if (StringUtils.equals(name, value.getName())) {
                 return value;
             }

@@ -1,7 +1,5 @@
 package cn.garden.generate.entity;
 
-import cn.garden.generate.entity.EntityType;
-import cn.garden.generate.entity.enums.LanguageEnum;
 import org.junit.jupiter.api.Test;
 
 import java.sql.JDBCType;
@@ -21,9 +19,9 @@ public class TestEntityType {
     @Test
     public void setTargetLanguage() {
         EntityType entityType = new EntityType("String");
-        entityType.setTargetLanguage(LanguageEnum.JAVA);
+        entityType.setTargetLanguage(LanguageType.JAVA);
 
-        assertEquals(LanguageEnum.JAVA, entityType.getTargetLanguage());
+        assertEquals(LanguageType.JAVA, entityType.getTargetLanguage());
     }
 
     @Test
@@ -49,7 +47,7 @@ public class TestEntityType {
     @Test
     public void getStringTypeImportString() {
         EntityType string = new EntityType("String");
-        string.setTargetLanguage(LanguageEnum.JAVA);
+        string.setTargetLanguage(LanguageType.JAVA);
 
         assertEquals("", string.getImportString());
     }
@@ -65,7 +63,7 @@ public class TestEntityType {
     @Test
     public void getLocalDateTimeTypeImportString() {
         EntityType string = new EntityType("LocalDateTime");
-        string.setTargetLanguage(LanguageEnum.JAVA);
+        string.setTargetLanguage(LanguageType.JAVA);
 
         assertEquals("import java.time.LocalDateTime;", string.getImportString());
     }

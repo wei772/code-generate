@@ -1,6 +1,5 @@
 package cn.garden.generate.entity;
 
-import cn.garden.generate.entity.enums.LanguageEnum;
 import org.apache.commons.lang3.StringUtils;
 
 import java.sql.JDBCType;
@@ -34,7 +33,7 @@ public class Property implements Name {
      */
     private Boolean primaryKey;
 
-    private LanguageEnum targetLanguage;
+    private LanguageType targetLanguage;
 
     public Property() {
 
@@ -78,11 +77,11 @@ public class Property implements Name {
         this.setTargetLanguage(targetLanguage);
     }
 
-    public LanguageEnum getTargetLanguage() {
+    public LanguageType getTargetLanguage() {
         return targetLanguage;
     }
 
-    public void setTargetLanguage(LanguageEnum targetLanguage) {
+    public void setTargetLanguage(LanguageType targetLanguage) {
         this.targetLanguage = targetLanguage;
 
         //类型的目标语言与属性的保持一致

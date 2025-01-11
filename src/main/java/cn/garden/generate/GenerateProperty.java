@@ -1,7 +1,7 @@
-package cn.garden.generate.enums;
+package cn.garden.generate;
 
 import cn.garden.generate.entity.reader.EntityReader;
-import cn.garden.generate.entity.reader.enums.EntityReaderEnum;
+import cn.garden.generate.entity.reader.EntityReaderType;
 import cn.garden.generate.entity.reader.implementation.JdbcFileEntityReader;
 import cn.garden.generate.entity.reader.implementation.JsonFileEntityReader;
 import cn.garden.generate.implementation.EntityCodeGenerateWork;
@@ -12,7 +12,7 @@ import cn.garden.generate.template.TemplateRepository;
  *
  * @author liwei
  */
-public enum GeneratePropertyEnum {
+public enum GenerateProperty {
 
     /**
      * @see TemplateRepository #code  模板仓库编码
@@ -47,7 +47,7 @@ public enum GeneratePropertyEnum {
 //    GENERATE_WORK("generate.work","生成代码工作类,目前只支持entity"),
 
     /**
-     * @see EntityReaderEnum 枚举值  EntityReader名称，目前支持 jsonFile 与jdbc
+     * @see EntityReaderType 枚举值  EntityReader名称，目前支持 jsonFile 与jdbc
      */
     ENTITY_READER("entity.reader", "EntityReader名称，目前支持 jsonFile 与jdbc"),
 
@@ -83,7 +83,7 @@ public enum GeneratePropertyEnum {
 
     private final String description;
 
-    GeneratePropertyEnum(String name, String description) {
+    GenerateProperty(String name, String description) {
         this.name = name;
         this.description = description;
     }

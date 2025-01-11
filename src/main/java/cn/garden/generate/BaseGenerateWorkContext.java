@@ -1,6 +1,6 @@
 package cn.garden.generate;
 
-import cn.garden.generate.entity.enums.LanguageEnum;
+import cn.garden.generate.entity.LanguageType;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -24,7 +24,7 @@ public class BaseGenerateWorkContext {
 
     private List<String> targetNames = new ArrayList<>();
 
-    private LanguageEnum targetLanguage;
+    private LanguageType targetLanguage;
 
     private String author;
 
@@ -98,11 +98,11 @@ public class BaseGenerateWorkContext {
         this.basePackage = basePackage;
     }
 
-    public LanguageEnum getTargetLanguage() {
+    public LanguageType getTargetLanguage() {
         return targetLanguage;
     }
 
-    public void setTargetLanguage(LanguageEnum targetLanguage) {
+    public void setTargetLanguage(LanguageType targetLanguage) {
         this.targetLanguage = targetLanguage;
     }
 }

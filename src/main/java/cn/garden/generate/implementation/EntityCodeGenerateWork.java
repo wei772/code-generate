@@ -5,7 +5,7 @@ import cn.garden.generate.entity.reader.EntityReader;
 import cn.garden.generate.BaseGenerateWorkContext;
 import cn.garden.generate.CodeGenerateWork;
 import cn.garden.generate.util.Tags;
-import cn.garden.generate.enums.EntityTemplatePropertyEnum;
+import cn.garden.generate.EntityTemplateProperty;
 import cn.garden.generate.param.implementation.FileParam;
 import cn.garden.generate.param.implementation.FolderParam;
 import cn.garden.generate.template.TemplateEngine;
@@ -98,17 +98,17 @@ public class EntityCodeGenerateWork extends CodeGenerateWork {
     private Map<String, Object> initTemplateProperties(Entity entity) {
         Map<String, Object> templateProperties = new HashMap<>();
 
-        templateProperties.put(EntityTemplatePropertyEnum.BASE_PACKAGE.getName(), entityGenContext.getBasePackage());
-        templateProperties.put(EntityTemplatePropertyEnum.AUTHOR.getName(), entityGenContext.getAuthor());
-        templateProperties.put(EntityTemplatePropertyEnum.TAGS.getName(), new Tags(entityGenContext.getTags()));
+        templateProperties.put(EntityTemplateProperty.BASE_PACKAGE.getName(), entityGenContext.getBasePackage());
+        templateProperties.put(EntityTemplateProperty.AUTHOR.getName(), entityGenContext.getAuthor());
+        templateProperties.put(EntityTemplateProperty.TAGS.getName(), new Tags(entityGenContext.getTags()));
 
-        templateProperties.put(EntityTemplatePropertyEnum.ENTITY.getName(), entity);
-        templateProperties.put(EntityTemplatePropertyEnum.IMPORT_STRINGS.getName(), entity.getImportStrings());
-        templateProperties.put(EntityTemplatePropertyEnum.DESCRIPTION.getName(), entity.getDescription());
-        templateProperties.put(EntityTemplatePropertyEnum.SOURCE_NAME.getName(), entity.getSourceName());
-        templateProperties.put(EntityTemplatePropertyEnum.PASCAL_NAME.getName(), entity.getPascalName());
-        templateProperties.put(EntityTemplatePropertyEnum.CAMEL_NAME.getName(), entity.getCamelName());
-        templateProperties.put(EntityTemplatePropertyEnum.PROPERTIES.getName(), entity.getProperties());
+        templateProperties.put(EntityTemplateProperty.ENTITY.getName(), entity);
+        templateProperties.put(EntityTemplateProperty.IMPORT_STRINGS.getName(), entity.getImportStrings());
+        templateProperties.put(EntityTemplateProperty.DESCRIPTION.getName(), entity.getDescription());
+        templateProperties.put(EntityTemplateProperty.SOURCE_NAME.getName(), entity.getSourceName());
+        templateProperties.put(EntityTemplateProperty.PASCAL_NAME.getName(), entity.getPascalName());
+        templateProperties.put(EntityTemplateProperty.CAMEL_NAME.getName(), entity.getCamelName());
+        templateProperties.put(EntityTemplateProperty.PROPERTIES.getName(), entity.getProperties());
         return templateProperties;
     }
 

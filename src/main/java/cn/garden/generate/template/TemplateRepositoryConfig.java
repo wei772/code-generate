@@ -1,8 +1,7 @@
 package cn.garden.generate.template;
 
-import cn.garden.generate.entity.enums.LanguageEnum;
-import cn.garden.generate.enums.CodeGenerateWorkEnum;
-import cn.garden.generate.template.enums.TemplateEngineEnum;
+import cn.garden.generate.entity.LanguageType;
+import cn.garden.generate.CodeGenerateWorkType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +13,11 @@ import java.util.List;
  */
 public class TemplateRepositoryConfig {
 
-    private String engineName = TemplateEngineEnum.VELOCITY.getName();
+    private String engineName = TemplateEngineType.VELOCITY.getName();
 
-    private String generateType = CodeGenerateWorkEnum.ENTITY.getName();
+    private String generateType = CodeGenerateWorkType.ENTITY.getName();
 
-    private String targetLanguage = LanguageEnum.JAVA.getName();
+    private String targetLanguage = LanguageType.JAVA.getName();
 
     private List<String> templateFileNames = new ArrayList<>();
 

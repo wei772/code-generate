@@ -1,9 +1,5 @@
 package cn.garden.generate.entity;
 
-import cn.garden.generate.entity.Entity;
-import cn.garden.generate.entity.Property;
-import cn.garden.generate.entity.enums.EntityTypeValueEnum;
-import cn.garden.generate.entity.enums.LanguageEnum;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 
@@ -99,16 +95,16 @@ public class TestEntity {
 
         Property timeProperty = new Property();
         timeProperty.setSourceName("time");
-        timeProperty.setType(EntityTypeValueEnum.LOCAL_DATE_TIME.getName());
+        timeProperty.setType(EntityTypeValue.LOCAL_DATE_TIME.getName());
         userGroupEntity.addProperty(timeProperty);
 
         Property createTimeProperty = new Property();
         createTimeProperty.setSourceName("create_time");
-        createTimeProperty.setType(EntityTypeValueEnum.LOCAL_DATE_TIME.getName());
+        createTimeProperty.setType(EntityTypeValue.LOCAL_DATE_TIME.getName());
         userGroupEntity.addProperty(createTimeProperty);
-        userGroupEntity.setTargetLanguage(LanguageEnum.JAVA);
+        userGroupEntity.setTargetLanguage(LanguageType.JAVA);
 
-        assertEquals(LanguageEnum.JAVA, userGroupEntity.getTargetLanguage());
+        assertEquals(LanguageType.JAVA, userGroupEntity.getTargetLanguage());
         assertEquals(1, CollectionUtils.size(userGroupEntity.getImportStrings()));
         assertEquals("import java.time.LocalDateTime;", userGroupEntity.getImportStrings().get(0));
     }

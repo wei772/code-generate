@@ -1,8 +1,5 @@
 package cn.garden.generate.entity;
 
-import cn.garden.generate.entity.Property;
-import cn.garden.generate.entity.enums.EntityTypeValueEnum;
-import cn.garden.generate.entity.enums.LanguageEnum;
 import org.junit.jupiter.api.Test;
 
 import java.sql.JDBCType;
@@ -54,7 +51,7 @@ public class TestProperty {
     public void getPropertyJDBCType() {
         Property idProperty = new Property();
         idProperty.setSourceName("id");
-        idProperty.setType(EntityTypeValueEnum.LONG.getName());
+        idProperty.setType(EntityTypeValue.LONG.getName());
 
         assertEquals(JDBCType.BIGINT, idProperty.getJdbcType());
     }
@@ -65,7 +62,7 @@ public class TestProperty {
         idProperty.setSourceName("id");
         idProperty.setJdbcType(JDBCType.BIGINT);
 
-        assertEquals(EntityTypeValueEnum.LONG.getName(), idProperty.getType());
+        assertEquals(EntityTypeValue.LONG.getName(), idProperty.getType());
     }
 
     @Test
@@ -82,17 +79,17 @@ public class TestProperty {
     public void setTargetLanguage() {
         Property idProperty = new Property();
         idProperty.setSourceName("id");
-        idProperty.setTargetLanguage(LanguageEnum.JAVA);
+        idProperty.setTargetLanguage(LanguageType.JAVA);
 
-        assertEquals(LanguageEnum.JAVA, idProperty.getTargetLanguage());
+        assertEquals(LanguageType.JAVA, idProperty.getTargetLanguage());
     }
 
     @Test
     public void getLocalDateTimeTypeImportString() {
         Property idProperty = new Property();
-        idProperty.setTargetLanguage(LanguageEnum.JAVA);
+        idProperty.setTargetLanguage(LanguageType.JAVA);
         idProperty.setSourceName("time");
-        idProperty.setType(EntityTypeValueEnum.LOCAL_DATE_TIME.getName());
+        idProperty.setType(EntityTypeValue.LOCAL_DATE_TIME.getName());
 
         assertEquals("import java.time.LocalDateTime;", idProperty.getImportString());
     }
@@ -101,8 +98,8 @@ public class TestProperty {
     public void getLocalDateTimeTypeImportStringSequentialDependence() {
         Property idProperty = new Property();
         idProperty.setSourceName("time");
-        idProperty.setType(EntityTypeValueEnum.LOCAL_DATE_TIME.getName());
-        idProperty.setTargetLanguage(LanguageEnum.JAVA);
+        idProperty.setType(EntityTypeValue.LOCAL_DATE_TIME.getName());
+        idProperty.setTargetLanguage(LanguageType.JAVA);
 
         assertEquals("import java.time.LocalDateTime;", idProperty.getImportString());
     }

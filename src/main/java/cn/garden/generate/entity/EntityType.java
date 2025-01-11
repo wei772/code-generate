@@ -1,7 +1,5 @@
 package cn.garden.generate.entity;
 
-import cn.garden.generate.entity.enums.EntityTypeValueEnum;
-import cn.garden.generate.entity.enums.LanguageEnum;
 import cn.garden.generate.util.ExceptionUtil;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -15,9 +13,9 @@ import java.util.*;
  */
 public class EntityType {
 
-    private static final Map<EntityTypeValueEnum, JDBCType> VALUE_TO_JDBC_TYPE_MAP = new HashMap<>();
-    private static final Map<JDBCType, EntityTypeValueEnum> JDBC_TYPE_TO_VALUE_MAP = new HashMap<>();
-    private static final Map<LanguageEnum, String> LANGUAGE_IMPORT_GRAMMAR_MAP = new HashMap<>();
+    private static final Map<EntityTypeValue, JDBCType> VALUE_TO_JDBC_TYPE_MAP = new HashMap<>();
+    private static final Map<JDBCType, EntityTypeValue> JDBC_TYPE_TO_VALUE_MAP = new HashMap<>();
+    private static final Map<LanguageType, String> LANGUAGE_IMPORT_GRAMMAR_MAP = new HashMap<>();
     private static final List<EntityTypeLanguageConfig> ENTITY_TYPE_LANGUAGE_CONFIGS = new ArrayList<>();
 
     static {
@@ -25,12 +23,12 @@ public class EntityType {
         initLanguageImportGrammarMap();
     }
 
-    private final EntityTypeValueEnum value;
+    private final EntityTypeValue value;
     private final JDBCType jdbcType;
-    private LanguageEnum targetLanguage;
+    private LanguageType targetLanguage;
 
     public EntityType(String value) {
-        this.value = EntityTypeValueEnum.getEnum(value);
+        this.value = EntityTypeValue.of(value);
         this.jdbcType = convertToJdbcType(this.value);
     }
 
@@ -41,11 +39,11 @@ public class EntityType {
 
 
     private static void initLanguageImportGrammarMap() {
-        LANGUAGE_IMPORT_GRAMMAR_MAP.put(LanguageEnum.JAVA, "import %s;");
+        LANGUAGE_IMPORT_GRAMMAR_MAP.put(LanguageType.JAVA, "import %s;");
     }
 
     private static void initEntityTypeMap() {
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.STRING, JDBCType.VARCHAR);
+        addDoubleJdbcToValueMap(EntityTypeValue.STRING, JDBCType.VARCHAR);
         addJdbcToValueMap(
                 Arrays.asList(
                         JDBCType.CHAR
@@ -56,52 +54,52 @@ public class EntityType {
                         , JDBCType.LONGNVARCHAR
                         , JDBCType.LONGVARCHAR
                 ),
-                EntityTypeValueEnum.STRING);
-        addLanguageConfig(EntityTypeValueEnum.STRING, true, "java.lang.String");
+                EntityTypeValue.STRING);
+        addLanguageConfig(EntityTypeValue.STRING, true, "java.lang.String");
 
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.LONG, JDBCType.BIGINT);
-        addLanguageConfig(EntityTypeValueEnum.LONG, true, "java.lang.Long");
+        addDoubleJdbcToValueMap(EntityTypeValue.LONG, JDBCType.BIGINT);
+        addLanguageConfig(EntityTypeValue.LONG, true, "java.lang.Long");
 
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.INTEGER, JDBCType.INTEGER);
-        addLanguageConfig(EntityTypeValueEnum.INTEGER, true, "java.lang.Integer");
+        addDoubleJdbcToValueMap(EntityTypeValue.INTEGER, JDBCType.INTEGER);
+        addLanguageConfig(EntityTypeValue.INTEGER, true, "java.lang.Integer");
 
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.DOUBLE, JDBCType.DOUBLE);
-        addLanguageConfig(EntityTypeValueEnum.DOUBLE, true, "java.lang.Double");
+        addDoubleJdbcToValueMap(EntityTypeValue.DOUBLE, JDBCType.DOUBLE);
+        addLanguageConfig(EntityTypeValue.DOUBLE, true, "java.lang.Double");
 
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.LOCAL_DATE_TIME, JDBCType.TIMESTAMP);
+        addDoubleJdbcToValueMap(EntityTypeValue.LOCAL_DATE_TIME, JDBCType.TIMESTAMP);
         addJdbcToValueMap(
                 List.of(JDBCType.TIMESTAMP_WITH_TIMEZONE),
-                EntityTypeValueEnum.LOCAL_DATE_TIME);
-        addLanguageConfig(EntityTypeValueEnum.LOCAL_DATE_TIME, false, "java.time.LocalDateTime");
+                EntityTypeValue.LOCAL_DATE_TIME);
+        addLanguageConfig(EntityTypeValue.LOCAL_DATE_TIME, false, "java.time.LocalDateTime");
 
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.LOCAL_DATE, JDBCType.DATE);
-        addLanguageConfig(EntityTypeValueEnum.LOCAL_DATE, false, "java.time.LocalDate");
+        addDoubleJdbcToValueMap(EntityTypeValue.LOCAL_DATE, JDBCType.DATE);
+        addLanguageConfig(EntityTypeValue.LOCAL_DATE, false, "java.time.LocalDate");
 
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.LOCAL_TIME, JDBCType.TIME);
-        addLanguageConfig(EntityTypeValueEnum.LOCAL_TIME, false, "java.time.LocalTime");
+        addDoubleJdbcToValueMap(EntityTypeValue.LOCAL_TIME, JDBCType.TIME);
+        addLanguageConfig(EntityTypeValue.LOCAL_TIME, false, "java.time.LocalTime");
 
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.BIG_DECIMAL, JDBCType.DECIMAL);
-        addLanguageConfig(EntityTypeValueEnum.BIG_DECIMAL, false, "java.math.BigDecimal");
+        addDoubleJdbcToValueMap(EntityTypeValue.BIG_DECIMAL, JDBCType.DECIMAL);
+        addLanguageConfig(EntityTypeValue.BIG_DECIMAL, false, "java.math.BigDecimal");
 
 
-        addDoubleJdbcToValueMap(EntityTypeValueEnum.BOOLEAN, JDBCType.BOOLEAN);
-        addLanguageConfig(EntityTypeValueEnum.BOOLEAN, true, "java.lang.Boolean");
+        addDoubleJdbcToValueMap(EntityTypeValue.BOOLEAN, JDBCType.BOOLEAN);
+        addLanguageConfig(EntityTypeValue.BOOLEAN, true, "java.lang.Boolean");
     }
 
-    private static void addLanguageConfig(EntityTypeValueEnum string, Boolean builtIn, String languageType) {
+    private static void addLanguageConfig(EntityTypeValue string, Boolean builtIn, String languageType) {
         ENTITY_TYPE_LANGUAGE_CONFIGS.add(new EntityTypeLanguageConfig(
-                string, LanguageEnum.JAVA
+                string, LanguageType.JAVA
                 , builtIn, languageType));
     }
 
 
-    private static void addJdbcToValueMap(List<JDBCType> jdbcTypes, EntityTypeValueEnum value) {
+    private static void addJdbcToValueMap(List<JDBCType> jdbcTypes, EntityTypeValue value) {
         for (JDBCType jdbcType : jdbcTypes) {
             JDBC_TYPE_TO_VALUE_MAP.put(jdbcType, value);
         }
     }
 
-    private static void addDoubleJdbcToValueMap(EntityTypeValueEnum value, JDBCType jdbcType) {
+    private static void addDoubleJdbcToValueMap(EntityTypeValue value, JDBCType jdbcType) {
         VALUE_TO_JDBC_TYPE_MAP.put(value, jdbcType);
         JDBC_TYPE_TO_VALUE_MAP.put(jdbcType, value);
     }
@@ -114,15 +112,15 @@ public class EntityType {
         return jdbcType;
     }
 
-    private EntityTypeValueEnum convertToType(JDBCType jdbcType) {
-        EntityTypeValueEnum valueEnum = JDBC_TYPE_TO_VALUE_MAP.get(jdbcType);
+    private EntityTypeValue convertToType(JDBCType jdbcType) {
+        EntityTypeValue valueEnum = JDBC_TYPE_TO_VALUE_MAP.get(jdbcType);
         if (Objects.isNull(valueEnum)) {
             throw ExceptionUtil.createDefaultException("未找到JdbcType:" + jdbcType.getName() + "对应的类型");
         }
         return valueEnum;
     }
 
-    private JDBCType convertToJdbcType(EntityTypeValueEnum value) {
+    private JDBCType convertToJdbcType(EntityTypeValue value) {
         JDBCType type = VALUE_TO_JDBC_TYPE_MAP.get(value);
         if (Objects.isNull(type)) {
             throw ExceptionUtil.createDefaultException("未找到Value:" + value.getName() + "对应的Jdbc类型");
@@ -130,11 +128,11 @@ public class EntityType {
         return type;
     }
 
-    public LanguageEnum getTargetLanguage() {
+    public LanguageType getTargetLanguage() {
         return targetLanguage;
     }
 
-    public void setTargetLanguage(LanguageEnum targetLanguage) {
+    public void setTargetLanguage(LanguageType targetLanguage) {
         this.targetLanguage = targetLanguage;
     }
 
@@ -146,11 +144,11 @@ public class EntityType {
         return getImportGrammar(targetLanguageType.language(), targetLanguageType.languageType());
     }
 
-    private EntityTypeLanguageConfig getTargetLanguageType(EntityTypeValueEnum value) {
+    private EntityTypeLanguageConfig getTargetLanguageType(EntityTypeValue value) {
         return getTargetLanguageType(value, targetLanguage);
     }
 
-    private EntityTypeLanguageConfig getTargetLanguageType(EntityTypeValueEnum value, LanguageEnum targetLanguage) {
+    private EntityTypeLanguageConfig getTargetLanguageType(EntityTypeValue value, LanguageType targetLanguage) {
         EntityTypeLanguageConfig entityTypeLanguageConfig = ENTITY_TYPE_LANGUAGE_CONFIGS.stream()
                 .filter(
                         m -> Objects.equals(m.language(), targetLanguage)
@@ -165,14 +163,14 @@ public class EntityType {
         return entityTypeLanguageConfig;
     }
 
-    private String getImportGrammar(LanguageEnum targetLanguage, String type) {
+    private String getImportGrammar(LanguageType targetLanguage, String type) {
         String format = LANGUAGE_IMPORT_GRAMMAR_MAP.get(targetLanguage);
         return String.format(format, type);
     }
 
     public record EntityTypeLanguageConfig(
-            EntityTypeValueEnum value
-            , LanguageEnum language
+            EntityTypeValue value
+            , LanguageType language
             , Boolean builtIn
             , String languageType) {
     }

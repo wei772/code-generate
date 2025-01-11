@@ -1,6 +1,5 @@
 package cn.garden.generate.template;
 
-import cn.garden.generate.template.enums.TemplateEngineEnum;
 import cn.garden.generate.util.ExceptionUtil;
 import cn.garden.generate.util.JsonUtil;
 import cn.garden.generate.util.ResourceUtil;
@@ -56,7 +55,7 @@ public class TemplateRepository {
                         .map(m -> m.substring(m.indexOf(BASE_FOLDER))) //只保留包内路径
                         .map(m -> StringUtils.replace(m, File.separator, RESOURCE_SEPARATOR))
                         .toList();
-                TemplateEngineEnum templateEngineEnum = TemplateEngineEnum.getEnum(config.getEngineName());
+                TemplateEngineType templateEngineEnum = TemplateEngineType.of(config.getEngineName());
                 templateFiles = files.
                         stream().
                         filter(m -> m.endsWith(templateEngineEnum.getFileExtension())).

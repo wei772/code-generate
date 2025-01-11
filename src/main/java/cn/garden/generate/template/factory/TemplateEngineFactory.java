@@ -1,7 +1,7 @@
 package cn.garden.generate.template.factory;
 
 import cn.garden.generate.template.TemplateEngine;
-import cn.garden.generate.template.enums.TemplateEngineEnum;
+import cn.garden.generate.template.TemplateEngineType;
 import cn.garden.generate.template.implementation.VelocityTemplateEngine;
 import cn.garden.generate.util.ExceptionUtil;
 
@@ -13,8 +13,8 @@ import cn.garden.generate.util.ExceptionUtil;
 public class TemplateEngineFactory {
 
     public static TemplateEngine create(String name) {
-        TemplateEngineEnum templateEngineEnum = TemplateEngineEnum.getEnum(name);
-        if (templateEngineEnum == TemplateEngineEnum.VELOCITY) {
+        TemplateEngineType templateEngineEnum = TemplateEngineType.of(name);
+        if (templateEngineEnum == TemplateEngineType.VELOCITY) {
             return new VelocityTemplateEngine();
         }
 

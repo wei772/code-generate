@@ -1,6 +1,5 @@
 package cn.garden.generate.entity;
 
-import cn.garden.generate.entity.enums.LanguageEnum;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class Entity implements Name {
      */
     private String description = StringUtils.EMPTY;
 
-    private LanguageEnum targetLanguage;
+    private LanguageType targetLanguage;
 
     public Entity() {
     }
@@ -87,11 +86,11 @@ public class Entity implements Name {
                 .orElse(null);
     }
 
-    public LanguageEnum getTargetLanguage() {
+    public LanguageType getTargetLanguage() {
         return targetLanguage;
     }
 
-    public void setTargetLanguage(LanguageEnum targetLanguage) {
+    public void setTargetLanguage(LanguageType targetLanguage) {
         this.targetLanguage = targetLanguage;
 
         for (Property property : properties) {

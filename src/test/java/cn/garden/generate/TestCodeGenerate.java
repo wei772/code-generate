@@ -2,7 +2,6 @@ package cn.garden.generate;
 
 import cn.garden.generate.config.DatabaseConfig;
 import cn.garden.generate.config.FileConfig;
-import cn.garden.generate.enums.GeneratePropertyEnum;
 import cn.garden.generate.util.FileUtil;
 import cn.garden.generate.util.ResourceUtil;
 import org.apache.commons.collections4.CollectionUtils;
@@ -24,8 +23,8 @@ public class TestCodeGenerate {
     public void createJsonFileCodeGenerate() {
         CodeGenerateContext codeGenerateContext = new CodeGenerateContext();
         codeGenerateContext.setTemplateRepositoryCode("entityDemo");
-        codeGenerateContext.put(GeneratePropertyEnum.ENTITY_READER.getName(), "jsonFile");
-        codeGenerateContext.put(GeneratePropertyEnum.JSON_FILE.getName(), "user.json");
+        codeGenerateContext.put(GenerateProperty.ENTITY_READER.getName(), "jsonFile");
+        codeGenerateContext.put(GenerateProperty.JSON_FILE.getName(), "user.json");
 
         CodeGenerate codeGenerate = new CodeGenerate(codeGenerateContext);
 
@@ -37,10 +36,10 @@ public class TestCodeGenerate {
     public void createJdbcCodeGenerate() {
         CodeGenerateContext codeGenerateContext = new CodeGenerateContext();
         codeGenerateContext.setTemplateRepositoryCode("entityDemo");
-        codeGenerateContext.put(GeneratePropertyEnum.ENTITY_READER.getName(), "jdbc");
-        codeGenerateContext.put(GeneratePropertyEnum.URL.getName(), DatabaseConfig.getMysqlUrl());
-        codeGenerateContext.put(GeneratePropertyEnum.USER.getName(), DatabaseConfig.getMysqlUser());
-        codeGenerateContext.put(GeneratePropertyEnum.PASSWORD.getName(), DatabaseConfig.getMysqlPassword());
+        codeGenerateContext.put(GenerateProperty.ENTITY_READER.getName(), "jdbc");
+        codeGenerateContext.put(GenerateProperty.URL.getName(), DatabaseConfig.getMysqlUrl());
+        codeGenerateContext.put(GenerateProperty.USER.getName(), DatabaseConfig.getMysqlUser());
+        codeGenerateContext.put(GenerateProperty.PASSWORD.getName(), DatabaseConfig.getMysqlPassword());
 
         CodeGenerate codeGenerate = new CodeGenerate(codeGenerateContext);
         assertNotNull(codeGenerate.getCodeGenerateWork());
@@ -144,8 +143,8 @@ public class TestCodeGenerate {
         codeGenerateContext.setAuthor("liwei");
         codeGenerateContext.setTags(List.of("mysql"));
 
-        codeGenerateContext.put(GeneratePropertyEnum.JSON_FILE.getName(), getUserDefinition());
-        codeGenerateContext.put(GeneratePropertyEnum.ENTITY_READER.getName(), "jsonFile");
+        codeGenerateContext.put(GenerateProperty.JSON_FILE.getName(), getUserDefinition());
+        codeGenerateContext.put(GenerateProperty.ENTITY_READER.getName(), "jsonFile");
 
         CodeGenerate codeGenerate = new CodeGenerate(codeGenerateContext);
         codeGenerate.run();
@@ -159,10 +158,10 @@ public class TestCodeGenerate {
         codeGenerateContext.setTargetNames(List.of("user"));
         codeGenerateContext.setOutput(getGenerateResultFolder());
         codeGenerateContext.setBasePackage("cn.garden.jdbc");
-        codeGenerateContext.put(GeneratePropertyEnum.ENTITY_READER.getName(), "jdbc");
-        codeGenerateContext.put(GeneratePropertyEnum.URL.getName(), DatabaseConfig.getMysqlUrl());
-        codeGenerateContext.put(GeneratePropertyEnum.USER.getName(), DatabaseConfig.getMysqlUser());
-        codeGenerateContext.put(GeneratePropertyEnum.PASSWORD.getName(), DatabaseConfig.getMysqlPassword());
+        codeGenerateContext.put(GenerateProperty.ENTITY_READER.getName(), "jdbc");
+        codeGenerateContext.put(GenerateProperty.URL.getName(), DatabaseConfig.getMysqlUrl());
+        codeGenerateContext.put(GenerateProperty.USER.getName(), DatabaseConfig.getMysqlUser());
+        codeGenerateContext.put(GenerateProperty.PASSWORD.getName(), DatabaseConfig.getMysqlPassword());
 
         CodeGenerate codeGenerate = new CodeGenerate(codeGenerateContext);
         codeGenerate.run();

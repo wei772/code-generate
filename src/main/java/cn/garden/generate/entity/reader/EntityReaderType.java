@@ -1,6 +1,6 @@
-package cn.garden.entity.reader.enums;
+package cn.garden.generate.entity.reader;
 
-import cn.garden.util.ExceptionUtil;
+import cn.garden.generate.util.ExceptionUtil;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author liwei
  */
-public enum EntityReaderEnum {
+public enum EntityReaderType {
 
     JSON_FILE("jsonFile"),
 
@@ -17,12 +17,12 @@ public enum EntityReaderEnum {
 
     private final String name;
 
-    EntityReaderEnum(String name) {
+    EntityReaderType(String name) {
         this.name = name;
     }
 
-    public static EntityReaderEnum getEnum(String name) {
-        for (EntityReaderEnum value : values()) {
+    public static EntityReaderType of(String name) {
+        for (EntityReaderType value : values()) {
             if (StringUtils.equals(name, value.getName())) {
                 return value;
             }

@@ -1,13 +1,13 @@
-package cn.garden.entity.enums;
+package cn.garden.generate.entity;
 
-import cn.garden.util.ExceptionUtil;
+import cn.garden.generate.util.ExceptionUtil;
 import org.apache.commons.lang3.StringUtils;
 
 
 /**
  * 实体类型枚举值
  */
-public enum EntityTypeValueEnum {
+public enum EntityTypeValue {
 
     STRING("String"),
 
@@ -30,13 +30,13 @@ public enum EntityTypeValueEnum {
 
     private final String name;
 
-    EntityTypeValueEnum(String name) {
+    EntityTypeValue(String name) {
 
         this.name = name;
     }
 
-    public static EntityTypeValueEnum getEnum(String name) {
-        for (EntityTypeValueEnum value : values()) {
+    public static EntityTypeValue of(String name) {
+        for (EntityTypeValue value : values()) {
             if (StringUtils.equals(name, value.getName())) {
                 return value;
             }

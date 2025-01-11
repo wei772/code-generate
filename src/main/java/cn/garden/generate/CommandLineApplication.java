@@ -1,6 +1,5 @@
 package cn.garden.generate;
 
-import cn.garden.generate.enums.GeneratePropertyEnum;
 import cn.garden.generate.util.ExceptionUtil;
 import cn.garden.generate.util.PropertiesGroup;
 import org.apache.commons.cli.*;
@@ -112,34 +111,34 @@ public class CommandLineApplication {
         CodeGenerateContext codeGenerateContext = new CodeGenerateContext();
 
         codeGenerateContext.setTemplateRepositoryCode(
-                propertiesGroup.getProperty(GeneratePropertyEnum.TEMPLATE_REPOSITORY_CODE.getName())
+                propertiesGroup.getProperty(GenerateProperty.TEMPLATE_REPOSITORY_CODE.getName())
         );
         codeGenerateContext.setOutput(
-                propertiesGroup.getProperty(GeneratePropertyEnum.BASE_FOLDER.getName())
+                propertiesGroup.getProperty(GenerateProperty.BASE_FOLDER.getName())
         );
         codeGenerateContext.setBasePackage(
-                propertiesGroup.getProperty(GeneratePropertyEnum.BASE_PACKAGE.getName())
+                propertiesGroup.getProperty(GenerateProperty.BASE_PACKAGE.getName())
         );
         codeGenerateContext.setAuthor(
-                propertiesGroup.getProperty(GeneratePropertyEnum.AUTHOR.getName())
+                propertiesGroup.getProperty(GenerateProperty.AUTHOR.getName())
         );
 
         codeGenerateContext.setTargetNames(
                 getListValue(
-                        propertiesGroup.getProperty(GeneratePropertyEnum.ENTITY_NAMES.getName())
+                        propertiesGroup.getProperty(GenerateProperty.ENTITY_NAMES.getName())
                 )
         );
         codeGenerateContext.setTags(
                 getListValue(
-                        propertiesGroup.getProperty(GeneratePropertyEnum.TAG.getName())
+                        propertiesGroup.getProperty(GenerateProperty.TAG.getName())
                 )
         );
 
-        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GeneratePropertyEnum.ENTITY_READER);
-        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GeneratePropertyEnum.JSON_FILE);
-        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GeneratePropertyEnum.URL);
-        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GeneratePropertyEnum.PASSWORD);
-        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GeneratePropertyEnum.USER);
+        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GenerateProperty.ENTITY_READER);
+        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GenerateProperty.JSON_FILE);
+        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GenerateProperty.URL);
+        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GenerateProperty.PASSWORD);
+        putCodeGenerateContext(propertiesGroup, codeGenerateContext, GenerateProperty.USER);
 
         return codeGenerateContext;
     }
@@ -157,7 +156,7 @@ public class CommandLineApplication {
     private static void putCodeGenerateContext(
             PropertiesGroup propertiesGroup
             , CodeGenerateContext codeGenerateContext
-            , GeneratePropertyEnum GeneratePropertyEnum) {
+            , GenerateProperty GeneratePropertyEnum) {
         codeGenerateContext.put(
                 GeneratePropertyEnum.getName()
                 , propertiesGroup.getProperty(GeneratePropertyEnum.getName())
@@ -170,7 +169,7 @@ public class CommandLineApplication {
         new HelpFormatter().printHelp("code-generate,详情解释参照GeneratePropertyEnum枚举", OPTIONS);
 
         System.out.println("Java Property 列表 ,使用的时候请加上-D前缀，范例-Dgenerate.author=liwei");
-        for (GeneratePropertyEnum value : GeneratePropertyEnum.values()) {
+        for (GenerateProperty value : GenerateProperty.values()) {
             System.out.printf("%-28s  %s%n", value.getName(), value.getDescription());
         }
     }

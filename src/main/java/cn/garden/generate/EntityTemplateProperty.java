@@ -1,4 +1,4 @@
-package cn.garden.generate.enums;
+package cn.garden.generate;
 
 import cn.garden.generate.entity.Entity;
 import cn.garden.generate.util.Tags;
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author liwei
  */
-public enum EntityTemplatePropertyEnum {
+public enum EntityTemplateProperty {
 
     /**
      * @see String #类型
@@ -67,12 +67,12 @@ public enum EntityTemplatePropertyEnum {
 
     private final String name;
 
-    EntityTemplatePropertyEnum(String name) {
+    EntityTemplateProperty(String name) {
         this.name = name;
     }
 
-    public static EntityTemplatePropertyEnum getEnum(String name) {
-        for (EntityTemplatePropertyEnum value : values()) {
+    public static EntityTemplateProperty of(String name) {
+        for (EntityTemplateProperty value : values()) {
             if (StringUtils.equals(name, value.getName())) {
                 return value;
             }

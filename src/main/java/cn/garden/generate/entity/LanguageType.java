@@ -1,34 +1,34 @@
-package cn.garden.template.enums;
+package cn.garden.generate.entity;
 
-import cn.garden.util.ExceptionUtil;
+import cn.garden.generate.util.ExceptionUtil;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * 模板引擎类型枚举
- *
- * @author liwei
+ * 语言枚举
  */
-public enum TemplateEngineEnum {
+public enum LanguageType {
 
-    VELOCITY("velocity", ".vtl"),
+    JAVA("Java", ".java"),
+
     ;
 
     private final String name;
 
     private final String fileExtension;
 
-    TemplateEngineEnum(String name, String fileExtension) {
+    LanguageType(String name, String fileExtension) {
         this.name = name;
         this.fileExtension = fileExtension;
     }
 
-    public static TemplateEngineEnum getEnum(String name) {
-        for (TemplateEngineEnum value : values()) {
+    public static LanguageType of(String name) {
+        for (LanguageType value : values()) {
             if (StringUtils.equals(name, value.getName())) {
                 return value;
             }
         }
-        throw ExceptionUtil.createDefaultException("模板引擎类型枚举" + name);
+
+        throw ExceptionUtil.createDefaultException("不支持语言" + name);
     }
 
     public String getName() {

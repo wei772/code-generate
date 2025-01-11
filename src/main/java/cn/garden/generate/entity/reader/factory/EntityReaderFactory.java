@@ -1,10 +1,10 @@
 package cn.garden.generate.entity.reader.factory;
 
 import cn.garden.generate.entity.reader.EntityReader;
-import cn.garden.generate.entity.reader.enums.EntityReaderEnum;
+import cn.garden.generate.entity.reader.EntityReaderType;
 import cn.garden.generate.entity.reader.implementation.JdbcFileEntityReader;
 import cn.garden.generate.entity.reader.implementation.JsonFileEntityReader;
-import cn.garden.generate.enums.GeneratePropertyEnum;
+import cn.garden.generate.GenerateProperty;
 
 import java.util.Map;
 
@@ -16,16 +16,16 @@ import java.util.Map;
 public class EntityReaderFactory {
 
     public static EntityReader create(String name, Map<String, Object> extendMap) {
-        EntityReaderEnum entityReaderEnum = EntityReaderEnum.getEnum(name);
+        EntityReaderType entityReaderType = EntityReaderType.of(name);
 
-        return switch (entityReaderEnum) {
+        return switch (entityReaderType) {
             case JSON_FILE -> new JsonFileEntityReader(
-                    (String) extendMap.get(GeneratePropertyEnum.JSON_FILE.getName())
+                    (String) extendMap.get(GenerateProperty.JSON_FILE.getName())
             );
             case JDBC -> new JdbcFileEntityReader(
-                    (String) extendMap.get(GeneratePropertyEnum.URL.getName()),
-                    (String) extendMap.get(GeneratePropertyEnum.USER.getName()),
-                    (String) extendMap.get(GeneratePropertyEnum.PASSWORD.getName())
+                    (String) extendMap.get(GenerateProperty.URL.getName()),
+                    (String) extendMap.get(GenerateProperty.USER.getName()),
+                    (String) extendMap.get(GenerateProperty.PASSWORD.getName())
             );
         };
 
